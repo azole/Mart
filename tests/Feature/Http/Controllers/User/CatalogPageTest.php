@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
+use App\Features\Operation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Artisan;
 use Laravel\Pennant\Feature;
@@ -25,7 +26,7 @@ class CatalogPageTest extends TestCase
     {
         Artisan::call('db:seed');
 
-        Feature::activate('operation');
+        Feature::activate(Operation::class);
 
         $this->get('/catalog')
             ->assertSeeText('Add to cart');
@@ -36,7 +37,7 @@ class CatalogPageTest extends TestCase
     {
         Artisan::call('db:seed');
 
-        Feature::deactivate('operation');
+        Feature::deactivate(Operation::class);
 
         $this->get('/catalog')
             ->assertDontSeeText('Add to cart');

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Http\Controllers\User;
 
+use App\Features\Operation;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Pennant\Feature;
 use PHPUnit\Framework\Attributes\Test;
@@ -22,7 +23,7 @@ class ShopTest extends TestCase
     #[Test]
     public function seeLoginItemWhenOperationFeatureOn()
     {
-        Feature::activate('operation');
+        Feature::activate(Operation::class);
 
         $this->get('/catalog')
             ->assertSeeText('Track my order')
@@ -33,7 +34,7 @@ class ShopTest extends TestCase
     #[Test]
     public function dontSeeLoginItemWhenOperationFeatureOff()
     {
-        Feature::deactivate('operation');
+        Feature::deactivate(Operation::class);
 
         $this->get('/catalog')
             ->assertDontSeeText('Track my order')
