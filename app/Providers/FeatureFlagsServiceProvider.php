@@ -9,5 +9,6 @@ class FeatureFlagsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        Feature::define('operation', fn() => true);
     }
 }

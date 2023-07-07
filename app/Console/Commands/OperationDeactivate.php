@@ -15,6 +15,8 @@ class OperationDeactivate extends Command
     {
         $feature->deactivate('operation');
 
+        $this->line('Deactivated');
+
         return self::SUCCESS;
     }
 }

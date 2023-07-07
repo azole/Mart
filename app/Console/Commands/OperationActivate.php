@@ -15,6 +15,8 @@ class OperationActivate extends Command
     {
         $feature->activate('operation');
 
+        $this->line('Activated');
+
         return self::SUCCESS;
     }
 }
